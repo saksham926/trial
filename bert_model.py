@@ -14,7 +14,7 @@ def app():
     st.write("BertTopic Analysis")
     regex = "\\b[0-9]{15}|[0-9]{12}\\b"
     uploaded_file = st.file_uploader("Choose a file",type=['csv'])
-    st.write(type(uploaded_file))
+
     if uploaded_file is not None:
         df=pd.read_csv(uploaded_file)
         st.dataframe(df)
