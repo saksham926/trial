@@ -19,6 +19,18 @@ def app():
         plot_model(save=True)
         p = open("Word Frequency.html")
         components.html(p.read(),width=1000,height=1000)
+        plot_model(lda,plot="bigram",save=True)
+        p=open("Bigram.html")
+        components.html(p.read(),width=1000,height=1000)
+        plot_model(lda,plot='sentiment',topic_num = 'Topic 0',save=True)
+        p=open("Sentiments.html")
+        components.html(p.read(),width=1000,height=1000)
+        plot_model(lda,plot='tsne',save=True)
+        p=open("TSNE.html")
+        components.html(p.read(),width=1000,height=1000)
+        plot_model(lda,plot='topic_distribution',save=True)
+        p=open("Topic Distribution.html")
+        components.html(p.read(),width=1000,height=1000)
 
     else:
         st.warning("you need to upload an excel file.")
