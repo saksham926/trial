@@ -7,7 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 import streamlit.components.v1 as components
 
-def remove_stopwords(text):
+def remove_stopwords(text,stop_words):
     return " ".join([word for word in str(text).split() if word not in stop_words])
 
 def app():
@@ -27,7 +27,7 @@ def app():
         stop_words = set(stopwords.words('english'))
         stop_words.add('subject')
         stop_words.add('http')
-        df['text'] = df['text'].apply(lambda x: remove_stopwords(x))
+        df['text'] = df['text'].apply(lambda x: remove_stopwords(x,stop_words))
         titles = df.text.to_list()
         cancerhealth_disparities_model = BERTopic(verbose=True)
         topics, probabilities = cancerhealth_disparities_model.fit_transform(titles)
